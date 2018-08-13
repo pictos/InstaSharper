@@ -26,12 +26,12 @@ namespace InstaSharper.Examples.Samples
             //foreach (var thread in recipientsResult.Value.Threads)
             //    Console.WriteLine($"Threadname: {thread.ThreadTitle}, users: {thread.Users.Count}");
 
-            //var inboxThreads = await _instaApi.GetDirectInboxAsync();
-            //if (!inboxThreads.Succeeded)
-            //{
-            //    Console.WriteLine("Unable to get inbox");
-            //    return;
-            //}
+            var inboxThreads = await _instaApi.GetDirectInboxAsync();
+            if (!inboxThreads.Succeeded)
+            {
+                Console.WriteLine("Unable to get inbox");
+                return;
+            }
             //Console.WriteLine($"Got {inboxThreads.Value.Inbox.Threads.Count} inbox threads");
             //foreach (var thread in inboxThreads.Value.Inbox.Threads)
             //    Console.WriteLine($"Threadname: {thread.Title}, users: {thread.Users.Count}");
@@ -41,9 +41,9 @@ namespace InstaSharper.Examples.Samples
             //    firstThread.ThreadId, "test");
 
             await _instaApi.LoginAsync().ConfigureAwait(false);
-            //var threadId = "17842722817268597";
-            var threadId = "340282366841710300949128112561041529717";
-            var oldCursor = "28216621050859567330860915939606528";
+            var threadId = inboxThreads.Value.Inbox.Threads.FirstOrDefault().ThreadId;
+            var oldCursor = inboxThreads.Value.Inbox.Threads.FirstOrDefault().OldestCursor;
+
             var msgEspecificas = await _instaApi.GetDirectInboxThreadAsync(threadId);
             var tet = msgEspecificas.Value.Items.Where(x => x.DirectMedia != null);
             var cursor = await _instaApi.GetDirectInboxCursorAsync(threadId,oldCursor);
