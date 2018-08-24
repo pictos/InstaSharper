@@ -17,7 +17,7 @@ namespace InstaSharper.API
 
             //"Instagram 51.0.0.20.85 Android (23/6.0.1; 640dpi; 1440x2560; samsung; SM-G935F; hero2lte; samsungexynos8890; en_NZ)";
         public const string USER_AGENT =
-            "Instagram 51.0.0.20.85 Android (23/6.0.1; 640dpi; 1440x2560; samsung; SM-G935F; hero2lte; samsungexynos8890; pt_BR)";
+            "Instagram 51.0.0.20.85 Android (26/8.0.0; 640dpi; 1440x2560; samsung; SM-G935F; hero2lte; samsungexynos8890; pt_BR)";
         public const string HEADER_USER_AGENT = "User-Agent";
 
         public const string HEADER_QUERY        = "q";

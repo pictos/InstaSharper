@@ -83,7 +83,7 @@ namespace InstaSharper.Classes.ResponseWrappers
 
         [JsonProperty("story_hashtags")] public List<InstaReelMentionResponse> StoryHashtags { get; set; }
 
-        [JsonProperty("story_feed_media")] public List<object> StoryFeedMedia { get; set; }
+        [JsonProperty("story_feed_media")] public List<InstaStoryFeedMediaResponse> StoryFeedMedia { get; set; }
 
         [JsonProperty("story_locations")] public List<InstaLocationResponse> StoryLocations { get; set; }
 

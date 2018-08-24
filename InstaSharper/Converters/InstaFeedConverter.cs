@@ -7,21 +7,31 @@ namespace InstaSharper.Converters
     internal class InstaFeedConverter : IObjectConverter<InstaFeed, InstaFeedResponse>
     {
         public InstaFeedResponse SourceObject { get; set; }
-
+        private int i = 0;
         public InstaFeed Convert()
         {
-            if (SourceObject?.Items == null)
-                throw new ArgumentNullException("InstaFeedResponse or its Items");
-            var feed = new InstaFeed();
-            foreach (var instaUserFeedItemResponse in SourceObject.Items)
+            try
             {
-                if (instaUserFeedItemResponse?.Type != 0) continue;
-                var feedItem = ConvertersFabric.Instance.GetSingleMediaConverter(instaUserFeedItemResponse).Convert();
-                feed.Medias.Add(feedItem);
-            }
+                
+                if (SourceObject?.Items == null)
+                    throw new ArgumentNullException("InstaFeedResponse or its Items");
+                var feed = new InstaFeed();
+                foreach (var instaUserFeedItemResponse in SourceObject.Items)
+                {
+                    i++;
+                    if (instaUserFeedItemResponse?.Type != 0) continue;
+                    var feedItem = ConvertersFabric.Instance.GetSingleMediaConverter(instaUserFeedItemResponse).Convert();
+                    feed.Medias.Add(feedItem);
+                }
 
-            feed.NextId = SourceObject.NextMaxId;
-            return feed;
+                feed.NextId = SourceObject.NextMaxId;
+                return feed;
+            }
+            catch (Exception ex)
+            {
+                var p = ex;
+                throw;
+            }
         }
     }
 }

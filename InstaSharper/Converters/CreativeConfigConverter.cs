@@ -4,7 +4,7 @@ using System;
 
 namespace InstaSharper.Converters
 {
-    public class CreativeConfigConverter : IObjectConverter<CreativeConfig, CreativeConfigResponse>
+    internal class CreativeConfigConverter : IObjectConverter<CreativeConfig, CreativeConfigResponse>
     {
         public CreativeConfigResponse SourceObject { get ; set ; }
 

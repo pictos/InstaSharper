@@ -278,5 +278,10 @@ namespace InstaSharper.Converters
         {
             return new CreativeConfigConverter { SourceObject = configResponse };
         }
+
+        public IObjectConverter<InstaStoryFeedMedia, InstaStoryFeedMediaResponse> GetStoryFeedMedia(InstaStoryFeedMediaResponse feedMedia)
+        {
+            return new InstaStoryFeedMediaConverter { SourceObject = feedMedia };
+        }
     }
 }

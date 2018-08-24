@@ -82,5 +82,7 @@ namespace InstaSharper.Classes.Models
         public List<InstaVideo> VideoList { get; set; } = new List<InstaVideo>();
 
         public CreativeConfig Creative { get; set; }
+
+        public List<InstaStoryFeedMedia> StoryFeedMedia { get; set; } = new List<InstaStoryFeedMedia>();
     }
 }

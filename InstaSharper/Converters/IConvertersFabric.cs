@@ -5,7 +5,7 @@ namespace InstaSharper.Converters
 {
     public interface IConvertersFabric
     {
-
+        IObjectConverter<InstaStoryFeedMedia, InstaStoryFeedMediaResponse> GetStoryFeedMedia(InstaStoryFeedMediaResponse feedMedia);
         IObjectConverter<CreativeConfig, CreativeConfigResponse> GetCreativeConverter(CreativeConfigResponse configResponse);
 
         IObjectConverter<InstaUserShort, InstaUserShortResponse> GetUserShortConverter(

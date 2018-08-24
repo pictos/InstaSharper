@@ -37,7 +37,13 @@ namespace InstaSharper.Converters
                 VideoDuration                = SourceObject.VideoDuration ?? 0,
                 AdAction                     = SourceObject.AdAction,
                 SupportsReelReactions        = SourceObject.SupportsReelReactions
+                
             };
+
+            if (SourceObject.StoryFeedMedia != null)
+                foreach (var item in SourceObject.StoryFeedMedia)
+                    instaStory.StoryFeedMedia.Add(ConvertersFabric.Instance.GetStoryFeedMedia(item).Convert());
+                
 
             if (SourceObject.User != null)
                 instaStory.User = ConvertersFabric.Instance.GetUserShortConverter(SourceObject.User).Convert();

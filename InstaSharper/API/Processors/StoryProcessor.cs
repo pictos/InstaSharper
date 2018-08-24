@@ -38,15 +38,15 @@ namespace InstaSharper.API.Processors
             try
             {
                 var storyFeedUri = UriCreator.GetStoryFeedUri();
-                var request = HttpHelper.GetDefaultRequest(HttpMethod.Get, storyFeedUri, _deviceInfo);
-                var response = await _httpRequestProcessor.SendAsync(request);
+                var request      = HttpHelper.GetDefaultRequest(HttpMethod.Get, storyFeedUri, _deviceInfo);
+                var response     = await _httpRequestProcessor.SendAsync(request);
                 var json = await response.Content.ReadAsStringAsync();
                 if (response.StatusCode != HttpStatusCode.OK) return Result.Fail("", (InstaStoryFeed) null);
                 var storyFeedResponse = JsonConvert.DeserializeObject<InstaStoryFeedResponse>(json);
                 var instaStoryFeed = ConvertersFabric.Instance.GetStoryFeedConverter(storyFeedResponse).Convert();
                 List<InstaReelFeed> teste = instaStoryFeed.Items;
                 var s = teste.SelectMany(x=>x.Items).ToList();
-                var p = s.Where(x => x.Creative != null).ToList();
+                var p = s.Where(x => x.StoryFeedMedia.Count > 0).ToList();
                 return Result.Success(instaStoryFeed);
             }
             catch (Exception exception)

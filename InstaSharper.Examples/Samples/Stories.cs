@@ -22,6 +22,8 @@ namespace InstaSharper.Examples.Samples
                 Console.WriteLine($"Unable to get story feed: {result.Info}");
                 return;
             }
+
+            var teste = await _instaApi.GetUserStoryAsync(237398239);
             var storyFeed = result.Value;
             Console.WriteLine($"Got {storyFeed.Items.Count} story reels.");
             foreach (var feedItem in storyFeed.Items)

@@ -21,8 +21,11 @@ namespace InstaSharper.Converters
                 Rotation = SourceObject.Rotation,
                 IsHidden = SourceObject.IsHidden,
                 IsPinned = SourceObject.IsPinned,
-                Location = ConvertersFabric.Instance.GetLocationShortConverter(SourceObject.Location).Convert()
             };
+
+            if (SourceObject.Location != null)
+                location.Location = ConvertersFabric.Instance.GetLocationShortConverter(SourceObject.Location).Convert();
+
             return location;
         }
     }
